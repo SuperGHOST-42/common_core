@@ -1,7 +1,4 @@
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include "../libft.h" 
 
 char	*get_next_line(int fd)
 {
@@ -37,7 +34,7 @@ char	*read_and_stash(int fd, char *stash)
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
-		stash = ft_strjoin(stash, buffer);
+		stash = ft_strjoin_gnl(stash, buffer);
 	}
 	free(buffer);
 	return (stash);
@@ -45,7 +42,7 @@ char	*read_and_stash(int fd, char *stash)
 
 char	*get_line(char *stash)
 {
-	size_t		i;
+	size_t	i;
 	char	*line;
 
 	if (!stash || stash[0] == '\0')
@@ -61,12 +58,11 @@ char	*get_line(char *stash)
 
 char	*clean_stash(char *stash)
 {
-	int		i;
+	size_t	i = 0;
 	char	*rest;
 
 	if (!stash)
 		return (NULL);
-	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (!stash[i])
@@ -78,15 +74,20 @@ char	*clean_stash(char *stash)
 	free(stash);
 	return (rest);
 }
-
-int	main(int argc, char **argv)
+ int	main(int argc, char **argv)
 {
-	 int	fd = open("text.txt", O_RDONLY);
-	 printf("%i\n", fd);
-	 char *str = get_next_line(fd);
-	 if (!str)
-		printf("bug\n");
-	
-	 printf("%s\n", str);
+	char	*line;
+	int		fd;		
+	int	i = 0;
+	fd = open(argv[1], O_RDONLY);
+
+	if (fd < 0)
+		return (1);
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%d: %s", ++i, line);
+		free(line);
+	}
+	close(fd);
 	return (0);
 }
