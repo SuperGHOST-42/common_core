@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arpereir <arpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 15:17:21 by arpereir          #+#    #+#             */
-/*   Updated: 2025/06/11 13:37:37 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:37:15 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stash = read_and_stash(fd, stash);
-	if (!stash)
+	stash[fd] = read_and_stash(fd, stash[fd]);
+	if (!stash[fd])
 		return (NULL);
-	line = get_line(stash);
-	stash = clean_stash(stash);
+	line = get_line(stash[fd]);
+	stash[fd] = clean_stash(stash[fd]);
 	return (line);
 }
 
@@ -87,7 +87,7 @@ char	*clean_stash(char *stash)
 	free(stash);
 	return (rest);
 }
- 
+/* 
  int	main(int argc, char **argv)
 {
 	char	*line;
@@ -102,6 +102,16 @@ char	*clean_stash(char *stash)
 		printf("%d: %s", ++i, line);
 		free(line);
 	}
+	i = 0;
+	fd2 = open(argv[2], O_RDONLY);
+	if (fd2 < 0)
+		printf("fd2 less than 0:(\n");
+	while ((line = get_next_line(fd2)) != NULL)
+	{
+		printf("%d: %s", ++i, line);
+		free(line);
+	}
 	close(fd);
+	close(fd2);
 	return (0);
-}  
+}  */

@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:03:27 by arpereir          #+#    #+#             */
-/*   Updated: 2025/05/01 19:22:15 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:41:38 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	**ft_split(char const *s, char c)
 /*
  int	main(void)
  {
- 	char	str[] = "Ariclenes,Alexandre,SuperGHOST_42";
+ 	char	str[] = ",,,,,Ariclenes,Alexandre,SuperGHOST_42,";
 
  	char	**ptr = ft_split(str, ',');
 	
