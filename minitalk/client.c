@@ -2,6 +2,14 @@
 #include <signal.h>
 #include "libft/libft.h"
 
+int signal_flag = 0;
+
+void    signal_handler(int sig)
+{
+    (void)sig;
+    signal_flag = 1;
+}
+
 void    send_bits(int pid, char c)
 {
     int bit;
@@ -15,7 +23,8 @@ void    send_bits(int pid, char c)
             kill(pid, SIGUSR1);
         else
             kill(pid, SIGUSR2);
-        usleep(1500);
+        while (!signal_flag)
+            pause();
         i--;
     }
 }
@@ -24,6 +33,8 @@ int main(int argc, char **argv)
 {
     int i;
     int pid;
+
+    signal(SIGUSR1, signal_handler);
 
     pid = ft_atoi(argv[1]);
     i = 0;
