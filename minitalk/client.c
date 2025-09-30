@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:00:43 by arpereir          #+#    #+#             */
-/*   Updated: 2025/09/30 17:06:10 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:22:46 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <signal.h>
 #include "libft/libft.h"
 
-int	g_signal_flag = 0;
+int	g_flag = 0;
 
 void	signal_handler(int sig)
 {
 	(void)sig;
-	g_signal_flag = 1;
+	g_flag = 1;
 }
 
 void	send_bits(int pid, char c)
@@ -31,12 +31,12 @@ void	send_bits(int pid, char c)
 	while (i >= 0)
 	{
 		bit = (c >> i) & 1;
-		g_signal_flag = 0;
+		g_flag = 0;
 		if (bit == 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		while (!g_signal_flag)
+		while (!g_flag)
 			pause();
 		i--;
 	}
