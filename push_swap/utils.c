@@ -95,15 +95,3 @@ int	stack_size(node	*stack)
     }
     return size;
 }
-
-int find_min(node	*stack)
-{
-    int min = stack->number;
-    while (stack)
-    {
-        if (stack->number < min)
-            min = stack->number;
-        stack = stack->next;
-    }
-    return min;
-}

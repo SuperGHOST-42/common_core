@@ -2,8 +2,6 @@
 
 int	is_sorted(node	*a)
 {
-	node	*tmp;
-
 	if(!a)
 		return (1);
 	while (a && a->next)
@@ -44,3 +42,66 @@ void sort_three(node **a)
     else if (n1 < n2 && n2 > n3 && n1 > n3)
         rra(a);            
 }
+
+// encontra o valor mínimo da stack
+int	find_min(node *stack)
+{
+	int	min;
+
+	min = stack->number;
+	while (stack)
+	{
+		if (stack->number < min)
+			min = stack->number;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+// move um valor até ao topo (decide entre ra e rra)
+void	move_min_to_top(node **a, int min)
+{
+	node	*tmp;
+	int		pos;
+	int		size;
+
+	if ((*a)->number == min)
+		return ;
+	else if ((*a)->next && (*a)->next->number == min)
+	{
+		sa(*a);
+		return ;
+	}
+	tmp = *a;
+	pos = 0;
+	size = stack_size(*a);
+	while (tmp && tmp->number != min)
+	{
+		pos++;
+		tmp = tmp->next;
+	}
+	if (pos <= size / 2)
+		while ((*a)->number != min)
+			ra(a);
+	else
+		while ((*a)->number != min)
+			rra(a);
+    
+}
+
+// ordena 5 números
+void	sort_five(node **a, node **b)
+{
+	int	min;
+
+	while (stack_size(*a) > 3)
+	{
+		min = find_min(*a);
+		move_min_to_top(a, min);
+		pb(a, b);
+	}
+	sort_three(a);
+	while (*b)
+		pa(a, b);
+}
+

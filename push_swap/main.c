@@ -5,9 +5,11 @@ int	main(int argc, char **argv)
 	node	*stack_a;
 	node	*stack_b;
 	char	**args;
+	//int		stack_size;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	(void) stack_b;
 
 	if (argc < 2)
 		return (0);
@@ -19,10 +21,16 @@ int	main(int argc, char **argv)
 	stack_a = parse_args(args);
 	if (!stack_a)
 		return (1);
-	if(!is_sorted(stack_a))
-		sort_three(&stack_a);
-	print_stack(stack_a);
+	////////////////////////////	
 
+
+	if(!is_sorted(stack_a))
+		sort_five(&stack_a, &stack_b);
+	print_stack(stack_a);
+	
+
+
+	////////////////////////////
 	if (argc == 2)
 		free(args);
 	return (0);

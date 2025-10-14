@@ -1,7 +1,7 @@
 # -------------------------
 # CONFIG
 # -------------------------
-NAME    = push_swap
+NAME    = main
 CC      = cc
 CFLAGS  = -Wall
 LIBFT   = libft/libft.a
@@ -12,7 +12,7 @@ SRC_DIR = .
 OBJ_DIR = obj
 
 # Ficheiros fonte
-SRC     = pushswap.c list_utils.c utils.c helpers.c
+SRC     = main.c list_utils.c utils.c operations.c op_and_prints.c sorting.c
 
 # Gerar os .o na pasta obj/
 OBJ     = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
