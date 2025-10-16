@@ -5,7 +5,7 @@ int	main(int argc, char **argv)
 	node	*stack_a;
 	node	*stack_b;
 	char	**args;
-	//int		stack_size;
+	int		size;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -21,16 +21,21 @@ int	main(int argc, char **argv)
 	stack_a = parse_args(args);
 	if (!stack_a)
 		return (1);
-	////////////////////////////	
 
-
+	size = stack_size(stack_a);
 	if(!is_sorted(stack_a))
-		sort_five(&stack_a, &stack_b);
+	{
+		if(size == 2)
+			sort_two(stack_a);
+		else if(size == 3)
+			sort_three(&stack_a);
+		else
+		{
+			index_stack(stack_a, size);
+			sort_radix(&stack_a, &stack_b);
+		}
+	}
 	print_stack(stack_a);
-	
-
-
-	////////////////////////////
 	if (argc == 2)
 		free(args);
 	return (0);

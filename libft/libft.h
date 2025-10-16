@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:20:50 by arpereir          #+#    #+#             */
-/*   Updated: 2025/05/03 18:55:49 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/10/10 17:11:44 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <limits.h>
+# include "ft_printf/ft_printf.h"
 
 /* ************************************************************************** */
 /*                              Character Checks                              */

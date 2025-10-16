@@ -50,6 +50,10 @@ void	move_min_to_top(node **a, int value);
 void	sort_two(node *a);
 void 	sort_three(node **a);
 void	sort_five(node **a, node **b);
+int 	*stack_to_array(node *a, int size);
+void 	index_stack(node *a, int size);
+void	sort_radix(node **a, node **b);
+
 
 
 #endif

@@ -105,3 +105,58 @@ void	sort_five(node **a, node **b)
 		pa(a, b);
 }
 
+int *stack_to_array(node *a, int size)
+{
+    int *arr = malloc(sizeof(int) * size);
+    int i = 0;
+
+    while (a)
+    {
+        arr[i++] = a->number;
+        a = a->next;
+    }
+    return arr;
+}
+
+void index_stack(node *a, int size)
+{
+    int *arr = stack_to_array(a, size);
+    int i, j, rank;
+
+    // atribui índice para cada número
+    for (i = 0; i < size; i++)
+    {
+        rank = 0;
+        for (j = 0; j < size; j++)
+            if (arr[i] > arr[j])
+                rank++;
+        a->number = rank;
+        a = a->next;
+    }
+    free(arr);
+}
+
+void sort_radix(node **a, node **b)
+{
+    int size = stack_size(*a);
+    int max_bits = 0;
+    int i, j;
+
+    // calcula quantos bits precisamos
+    while ((size - 1) >> max_bits)
+        max_bits++;
+
+    for (i = 0; i < max_bits; i++)
+    {
+        j = 0;
+        while (j++ < size)
+        {
+            if (((*a)->number >> i) & 1)
+                ra(a);       // bit = 1 → fica em A
+            else
+                pb(a, b);    // bit = 0 → vai para B
+        }
+        while (*b)
+            pa(a, b);        // devolve tudo para A
+    }
+}
