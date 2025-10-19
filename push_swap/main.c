@@ -9,25 +9,23 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	(void) stack_b;
-
+	(void)stack_b;
 	if (argc < 2)
 		return (0);
 	args = NULL;
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
-	else if(argc > 2)
+	else if (argc > 2)
 		args = &argv[1];
-	stack_a = parse_args(args);
+	stack_a = parse_and_init(args);
 	if (!stack_a)
 		return (1);
-
 	size = stack_size(stack_a);
-	if(!is_sorted(stack_a))
+	if (!is_sorted(stack_a))
 	{
-		if(size == 2)
+		if (size == 2)
 			sort_two(stack_a);
-		else if(size == 3)
+		else if (size == 3)
 			sort_three(&stack_a);
 		else
 		{
@@ -35,9 +33,7 @@ int	main(int argc, char **argv)
 			sort_radix(&stack_a, &stack_b);
 		}
 	}
-	print_stack(stack_a);
 	if (argc == 2)
 		free(args);
 	return (0);
 }
-

@@ -12,11 +12,11 @@ void	sb(node *b)
 	ft_printf("sb\n");
 }
 
-void ss(node *a, node *b)
+void	ss(node *a, node *b)
 {
-    swap(a);
-    swap(b);
-    ft_printf("ss\n");
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
 }
 
 void	pa(node **a, node **b)
@@ -30,6 +30,7 @@ void	pb(node **a, node **b)
 	push(b, a);
 	ft_printf("pb\n");
 }
+
 void	ra(node **a)
 {
 	rotate(a);

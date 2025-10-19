@@ -37,7 +37,7 @@ node *ft_new_node(int value)
 	return (node);
 }
 
-node 	*parse_args(char **str)
+node 	*parse_and_init(char **str)
 {
 	int	i;
 	long	num;
@@ -51,7 +51,7 @@ node 	*parse_args(char **str)
 		if (!is_valid_number(str[i]))
 			return (error_and_free(stack), NULL);
 		num = ft_atol(str[i]);
-		if (num == LONG_MAX || check_duplicate(stack, (int)num))
+		if (num == LONG_MAX || check_duplicate(stack, (int)num) || num == LONG_MIN)
 			return (error_and_free(stack), NULL);
 		new_node = ft_new_node((int)num);
 		if (!new_node)
