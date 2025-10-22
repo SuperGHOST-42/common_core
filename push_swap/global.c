@@ -1,1 +1,0 @@
-int COUNT = 0;
