@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-		"charconv": "c",
-		"random": "c",
-		"stdarg.h": "c",
-		"saver": "c"
-	}
-}
