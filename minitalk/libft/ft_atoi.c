@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:23:29 by arpereir          #+#    #+#             */
-/*   Updated: 2025/04/24 15:41:21 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/11/05 13:36:26 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	ft_atoi(const char *str)
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
-	return (sign * result);
+	if (str[i] == '\0')
+		return (sign * result);
+	return (0);
 }

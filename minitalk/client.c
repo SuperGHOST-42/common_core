@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:00:43 by arpereir          #+#    #+#             */
-/*   Updated: 2025/11/05 13:13:23 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/11/05 14:55:29 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ void	signal_handler(int sig)
 	g_flag = 1;
 }
 
+static void	send_signal(int pid, int sig)
+{
+	if (kill(pid, sig) == -1)
+	{
+		ft_printf("Invalid PID!\n");
+		exit(1);
+	}
+}
+
 void	send_bits(int pid, char c)
 {
 	int	bit;
@@ -33,9 +42,9 @@ void	send_bits(int pid, char c)
 		bit = (c >> i) & 1;
 		g_flag = 0;
 		if (bit == 1)
-			kill(pid, SIGUSR1);
+			send_signal(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
+			send_signal(pid, SIGUSR2);
 		while (!g_flag)
 			pause();
 		i--;
@@ -48,11 +57,17 @@ int	main(int argc, char **argv)
 	int	pid;
 
 	if (argc != 3)
+	{
+		ft_printf("Argc should be 3!\n");
 		return (1);
+	}
 	signal(SIGUSR1, signal_handler);
 	pid = ft_atoi(argv[1]);
 	if (pid <= 0)
+	{
+		ft_printf("Invalid PID!\n");
 		return (-1);
+	}
 	i = 0;
 	while (argv[2][i] != '\0')
 	{
