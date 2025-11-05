@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:56:22 by arpereir          #+#    #+#             */
-/*   Updated: 2025/09/30 17:00:37 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:44:47 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	handler(int sig, siginfo_t *info, void *context)
 	kill(info->si_pid, SIGUSR1);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	struct sigaction	sa;
 

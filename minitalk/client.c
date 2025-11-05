@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:00:43 by arpereir          #+#    #+#             */
-/*   Updated: 2025/09/30 17:22:46 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/11/05 13:13:23 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ int	main(int argc, char **argv)
 	int	i;
 	int	pid;
 
+	if (argc != 3)
+		return (1);
 	signal(SIGUSR1, signal_handler);
 	pid = ft_atoi(argv[1]);
+	if (pid <= 0)
+		return (-1);
 	i = 0;
 	while (argv[2][i] != '\0')
 	{
