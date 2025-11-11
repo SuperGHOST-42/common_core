@@ -1,9 +1,5 @@
 # MacOS
-.DS_Store
-
-# Libft built files
-push_swap/libft/
-push_swap/*.a
+.DS_Store
 
 # Object files
 push_swap/obj/
