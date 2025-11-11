@@ -1,0 +1,14 @@
+# MacOS
+.DS_Store
+
+# Libft built files
+push_swap/libft/
+push_swap/*.a
+
+# Object files
+push_swap/obj/
+push_swap/**/*.o
+
+# Editor folders
+.vscode/
+
