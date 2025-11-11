@@ -1,0 +1,14 @@
+# MacOS lixo
+.DS_Store
+
+# Ficheiros de compilação
+*.o
+*.a
+obj/
+
+# libft compilada (não meter no git)
+push_swap/libft/
+
+# Exam folders (não precisas no repo)
+exam_rank02/level_1/
+
