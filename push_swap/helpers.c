@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/11 20:46:50 by arpereir          #+#    #+#             */
+/*   Updated: 2025/11/11 22:15:20 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void	free_stack(node *stack)
+void	free_stack(t_node *stack)
 {
-	node	*tmp;
+	t_node	*tmp;
 
 	while (stack)
 	{
@@ -12,26 +24,27 @@ void	free_stack(node *stack)
 	}
 }
 
-void	error_and_free(node *stack)
+void	error_and_free(t_node *stack)
 {
 	write(2, "Error\n", 6);
 	free_stack(stack);
 }
 
-void	free_split(char **split)
+void	free_args(char **ptr)
 {
 	int	i;
 
 	i = 0;
-	if (!split)
+	if (!ptr)
 		return ;
-	while (split[i])
-		free(split[i++]);
-	free(split);
+	while (ptr[i])
+		free(ptr[i++]);
+	free(ptr);
 }
-void	print_stack(node *stack)
+
+void	print_stack(t_node *stack)
 {
-	node	*ptr;
+	t_node	*ptr;
 
 	ptr = stack;
 	while (ptr)
@@ -41,7 +54,7 @@ void	print_stack(node *stack)
 	}
 }
 
-int	stack_size(node *stack)
+int	stack_size(t_node *stack)
 {
 	int	size;
 

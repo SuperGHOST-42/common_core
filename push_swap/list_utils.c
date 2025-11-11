@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/11 20:47:00 by arpereir          #+#    #+#             */
+/*   Updated: 2025/11/11 21:51:45 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void	ft_lstadd_front(node **list, node *new)
+void	ft_lstadd_front(t_node **list, t_node *new)
 {
 	if (!list || !new)
 		return ;
@@ -8,9 +20,9 @@ void	ft_lstadd_front(node **list, node *new)
 	*list = new;
 }
 
-void	ft_lstadd_back(node **list, node *new)
+void	ft_lstadd_back(t_node **list, t_node *new)
 {
-	node	*ptr;
+	t_node	*ptr;
 
 	if (!list || !new)
 		return ;
@@ -25,39 +37,14 @@ void	ft_lstadd_back(node **list, node *new)
 	ptr->next = new;
 }
 
-node	*ft_new_node(int value)
+t_node	*ft_new_t_node(int value)
 {
-	node	*node;
+	t_node	*node;
 
-	node = malloc(sizeof(node));
+	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
 	node->number = value;
 	node->next = NULL;
 	return (node);
-}
-
-node	*parse_and_init(char **str)
-{
-	int		i;
-	long	num;
-	node	*stack;
-	node	*new_node;
-
-	stack = NULL;
-	i = 0;
-	while (str[i])
-	{
-		if (!is_valid_number(str[i]))
-			return (error_and_free(stack), NULL);
-		num = ft_atol(str[i]);
-		if (num == LONG_MAX || num == LONG_MIN || check_duplicate(stack, (int)num))
-			return (error_and_free(stack), NULL);
-		new_node = ft_new_node((int)num);
-		if (!new_node)
-			return (NULL);
-		ft_lstadd_back(&stack, new_node);
-		i++;
-	}
-	return (stack);
 }

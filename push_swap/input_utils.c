@@ -45,7 +45,7 @@ long	ft_atol(const char *str)
 	return (sign * result);
 }
 
-int	check_duplicate(node *stack, int value)
+int	check_duplicate(t_node *stack, int value)
 {
 	while (stack)
 	{

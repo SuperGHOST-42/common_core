@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/11 20:47:11 by arpereir          #+#    #+#             */
+/*   Updated: 2025/11/11 21:09:42 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void	swap(node *stack)
+void	swap(t_node *stack)
 {
 	int	temp;
 
@@ -11,9 +23,9 @@ void	swap(node *stack)
 	stack->next->number = temp;
 }
 
-void	push(node **dest, node **src)
+void	push(t_node **dest, t_node **src)
 {
-	node	*temp;
+	t_node	*temp;
 
 	if (!src || !*src)
 		return ;
@@ -23,10 +35,10 @@ void	push(node **dest, node **src)
 	*dest = temp;
 }
 
-void	rotate(node **stack)
+void	rotate(t_node **stack)
 {
-	node	*first;
-	node	*last;
+	t_node	*first;
+	t_node	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
@@ -39,10 +51,10 @@ void	rotate(node **stack)
 	last->next = first;
 }
 
-void	reverse_rotate(node **stack)
+void	reverse_rotate(t_node **stack)
 {
-	node	*prev;
-	node	*last;
+	t_node	*prev;
+	t_node	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
@@ -56,4 +68,11 @@ void	reverse_rotate(node **stack)
 	prev->next = NULL;
 	last->next = *stack;
 	*stack = last;
+}
+
+void	rrr(t_node **a, t_node **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_printf("rrr\n");
 }

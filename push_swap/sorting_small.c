@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_small.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/11 20:47:26 by arpereir          #+#    #+#             */
+/*   Updated: 2025/11/11 21:09:42 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int	is_sorted(node *a)
+int	is_sorted(t_node *a)
 {
 	if (!a)
 		return (1);
@@ -13,13 +25,13 @@ int	is_sorted(node *a)
 	return (1);
 }
 
-void	sort_two(node *a)
+void	sort_two(t_node *a)
 {
 	if (a && a->next && a->number > a->next->number)
 		sa(a);
 }
 
-void	sort_three(node **a)
+void	sort_three(t_node **a)
 {
 	int	n1;
 	int	n2;
@@ -46,7 +58,7 @@ void	sort_three(node **a)
 		rra(a);
 }
 
-int	find_min(node *stack)
+int	find_min(t_node *stack)
 {
 	int	min;
 
@@ -60,9 +72,9 @@ int	find_min(node *stack)
 	return (min);
 }
 
-void	move_min_to_top(node **a, int min)
+void	move_min_to_top(t_node **a, int min)
 {
-	node	*tmp;
+	t_node	*tmp;
 	int		pos;
 	int		size;
 

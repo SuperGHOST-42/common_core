@@ -1,6 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_big.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/11 20:47:24 by arpereir          #+#    #+#             */
+/*   Updated: 2025/11/11 23:39:35 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void	sort_five(node **a, node **b)
+t_node	*parse_and_init(char **str)
+{
+	int		i;
+	long	num;
+	t_node	*stack;
+	t_node	*new_t_node;
+
+	stack = NULL;
+	i = 0;
+	while (str[i])
+	{
+		if (!is_valid_number(str[i]))
+			return (error_and_free(stack), NULL);
+		num = ft_atol(str[i]);
+		if (num == LONG_MAX || num == LONG_MIN
+			|| check_duplicate(stack, (int)num))
+			return (error_and_free(stack), NULL);
+		new_t_node = ft_new_t_node((int)num);
+		if (!new_t_node)
+			return (NULL);
+		ft_lstadd_back(&stack, new_t_node);
+		i++;
+	}
+
+	return (stack);
+}
+
+void	sort_five(t_node **a, t_node **b)
 {
 	int	min;
 
@@ -15,7 +54,7 @@ void	sort_five(node **a, node **b)
 		pa(a, b);
 }
 
-int	*stack_to_array(node *a, int size)
+int	*stack_to_array(t_node *a, int size)
 {
 	int	*arr;
 	int	i;
@@ -32,7 +71,7 @@ int	*stack_to_array(node *a, int size)
 	return (arr);
 }
 
-void	index_stack(node *a, int size)
+void	index_stack(t_node *a, int size)
 {
 	int	*arr;
 	int	i;
@@ -60,10 +99,11 @@ void	index_stack(node *a, int size)
 	free(arr);
 }
 
-void	sort_radix(node **a, node **b)
+void	sort_radix(t_node **a, t_node **b)
 {
 	int	size;
 	int	max_bits;
+	int	num;
 	int	i;
 	int	j;
 
@@ -71,13 +111,13 @@ void	sort_radix(node **a, node **b)
 	max_bits = 0;
 	while ((size - 1) >> max_bits)
 		max_bits++;
-	i = 0;
-	while (i < max_bits)
+	i = -1;
+	while (++i < max_bits)
 	{
 		j = 0;
 		while (j++ < size)
 		{
-			int	num = (*a)->number;
+			num = (*a)->number;
 			if ((num >> i) & 1)
 				ra(a);
 			else
@@ -85,6 +125,5 @@ void	sort_radix(node **a, node **b)
 		}
 		while (*b)
 			pa(a, b);
-		i++;
 	}
 }
