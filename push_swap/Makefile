@@ -5,7 +5,7 @@ NAME    = main
 CC      = cc
 CFLAGS  = -Wall
 LIBFT   = libft/libft.a
-PRINTF  = libft/ft_printf/ft_printf.c libft/ft_printf/ft_utils.c
+PRINTF  = libft/ft_printf/libftprintf.a
 
 # Pastas
 SRC_DIR = .
@@ -22,7 +22,7 @@ OBJ     = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 # -------------------------
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 # Compilar .c -> .o na pasta obj/
