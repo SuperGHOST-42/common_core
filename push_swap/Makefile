@@ -1,7 +1,7 @@
 # -------------------------
 # CONFIG
 # -------------------------
-NAME    = main
+NAME    = pushswap
 CC      = cc -g
 CFLAGS  = -Wall
 LIBFT   = libft/libft.a

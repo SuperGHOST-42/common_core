@@ -6,11 +6,40 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:47:06 by arpereir          #+#    #+#             */
-/*   Updated: 2025/11/11 23:45:03 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/11/12 00:08:04 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+char	**get_args(int argc, char **argv)
+{
+	if (argc == 2)
+		return (ft_split(argv[1], ' '));
+	return (&argv[1]);
+}
+
+int	free_args_and_exit(char **args, int argc)
+{
+	if (argc == 2)
+		free_args(args);
+	return (1);
+}
+
+void	sort(t_node **a, t_node **b, int size)
+{
+	if (size == 2)
+		sort_two(*a);
+	else if (size == 3)
+		sort_three(a);
+	else if (size == 4 || size == 5)
+		sort_five(a, b);
+	else
+	{
+		index_stack(*a, size);
+		sort_radix(a, b);
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -19,43 +48,21 @@ int	main(int argc, char **argv)
 	char	**args;
 	int		size;
 
-	args = NULL;
-	stack_a = NULL;
-	stack_b = NULL;
-	(void)stack_b;
 	if (argc < 2)
 		return (0);
-	args = NULL;
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else if (argc > 2)
-		args = &argv[1];
+	args = get_args(argc, argv);
+	if (!args)
+		return (1);
 	stack_a = parse_and_init(args);
 	if (!stack_a)
-	{	
-		if (argc == 2)
-			free_args(args);
-		return (1);
-	}
+		return (free_args_and_exit(args, argc));
+	stack_b = NULL;
 	size = stack_size(stack_a);
 	if (!is_sorted(stack_a))
-	{
-		if (size == 2)
-			sort_two(stack_a);
-		else if (size == 3)
-			sort_three(&stack_a);
-		else if (size == 4 || size == 5)
-			sort_five(&stack_a, &stack_b);
-		else
-		{
-			index_stack(stack_a, size);
-			sort_radix(&stack_a, &stack_b);
-		}
-	}
+		sort(&stack_a, &stack_b, size);
 	if (argc == 2)
-		free_args(args); 
+		free_args(args);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
-	
 }

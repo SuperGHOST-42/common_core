@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:47:24 by arpereir          #+#    #+#             */
-/*   Updated: 2025/11/11 23:39:35 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/11/12 00:07:22 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ t_node	*parse_and_init(char **str)
 		ft_lstadd_back(&stack, new_t_node);
 		i++;
 	}
-
 	return (stack);
 }
 
