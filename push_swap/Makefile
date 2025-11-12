@@ -1,10 +1,8 @@
-# -------------------------
-# CONFIG
-# -------------------------
-NAME    = pushswap
-CC      = cc -g
-CFLAGS  = -Wall
-LIBFT   = libft/libft.a
+NAME    = push_swap
+CC      = cc
+CFLAGS  = -Wall -Werror -Wextra
+LIBFT_DIR = libft
+LIBFT   = $(LIBFT_DIR)/libft.a
 
 # Pastas
 SRC_DIR = .
@@ -19,16 +17,22 @@ OBJ     = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 # -------------------------
 # Regras principais
 # -------------------------
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
+# compilar o executável
 $(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@echo "✅ $(NAME) compilado com sucesso!"
 
-# Compilar .c -> .o na pasta obj/
+# compilar libft automaticamente
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
+
+# compilar .c -> .o na pasta obj/
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Criar pasta obj se não existir
+# criar pasta obj se não existir
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
@@ -37,11 +41,14 @@ $(OBJ_DIR):
 # -------------------------
 clean:
 	rm -rf $(OBJ_DIR)
+	@$(MAKE) clean -C $(LIBFT_DIR)
+	@echo "🧹 Objetos removidos."
 
 fclean: clean
 	rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@echo "🗑️  Tudo limpo."
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
