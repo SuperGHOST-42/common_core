@@ -1,48 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arpereir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 17:43:04 by arpereir          #+#    #+#             */
-/*   Updated: 2025/04/26 17:43:18 by arpereir         ###   ########.fr       */
+/*   Created: 2025/04/14 17:29:56 by arpereir          #+#    #+#             */
+/*   Updated: 2025/04/15 16:47:19 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char		*new_str;
-	size_t		i;
-	size_t		j;
+	int		i;
+	int		j;
+	char	*new_str;
 
-	if (!s1 || !s2)
-		return (NULL);
-	new_str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!new_str)
+	if (!s1)
 		return (NULL);
 	i = 0;
 	while (s1[i])
 	{
-		new_str[i] = s1[i];
+		if (!ft_strchr(set, s1[i]))
+			break ;
 		i++;
 	}
-	j = 0;
-	while (s2[j])
+	j = ft_strlen(s1) - 1;
+	while (j > i)
 	{
-		new_str[i + j] = s2[j];
-		j++;
+		if (!ft_strchr(set, s1[j]))
+			break ;
+		j--;
 	}
-	new_str[i + j] = '\0';
+	new_str = ft_substr(s1, i, j - i + 1);
 	return (new_str);
 }
 /*
 int	main(void)
 {
-	char	*str = ft_strjoin("Ariclenes", "Alexandre");
-
-	printf("%s\n", str);
+	printf("%s\n", ft_strtrim("...He.llo...", "."));
 	return (0);
 }*/
