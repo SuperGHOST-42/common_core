@@ -6,7 +6,11 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:00:43 by arpereir          #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/11/05 14:55:29 by arpereir         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/31 10:09:17 by arpereir         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +67,16 @@ int	main(int argc, char **argv)
 	}
 	signal(SIGUSR1, signal_handler);
 	pid = ft_atoi(argv[1]);
+<<<<<<< Updated upstream
 	if (pid <= 0)
 	{
 		ft_printf("Invalid PID!\n");
 		return (-1);
 	}
+=======
+	if (pid == -1)
+		return;
+>>>>>>> Stashed changes
 	i = 0;
 	while (argv[2][i] != '\0')
 	{
