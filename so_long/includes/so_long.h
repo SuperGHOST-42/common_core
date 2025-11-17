@@ -35,7 +35,6 @@ typedef struct s_game
     void    *win;
     t_map   map;
     t_player player;
-    // aqui depois metes as imagens (void *img_wall; etc.)
 }   t_game;
 
 void    error_exit(t_game *game, char *msg);
