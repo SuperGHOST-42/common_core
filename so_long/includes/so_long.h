@@ -37,15 +37,27 @@ typedef struct s_game
     t_player player;
 }   t_game;
 
+typedef struct s_flood_fill
+{
+    int	collectibles;
+    int collectibles_found;
+    int valid_exit;
+}   t_flood_fill;
+
 void    error_exit(t_game *game, char *msg);
 
 // map parsing
 void	load_map(t_game *game, char *file);
 int     ft_strlen_no_nl(char *s);
 
-//validate map
+// validate map
 int	check_rectangular(t_map *map);
 int	check_chars(t_map *map);
 int	count_elements(t_map *map);
+int	check_walls(t_map *map);
+
+// flood fill
+int	valid_path(t_game *game);
+
 
 # endif

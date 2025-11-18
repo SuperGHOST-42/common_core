@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:14:18 by arpereir          #+#    #+#             */
-/*   Updated: 2025/11/16 20:41:23 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/11/18 13:11:46 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	ft_putstr(char *s)
 	}
 	return (len);
 }
-
-size_t	ft_strlen_pf(char const *s)
+/*
+size_t	ft_strlen(char const *s)
 {
 	size_t	len;
 
@@ -40,7 +40,7 @@ size_t	ft_strlen_pf(char const *s)
 	while (s[len])
 		len++;
 	return (len);
-}
+}*/
 
 int	ft_putnbr(int nb)
 {

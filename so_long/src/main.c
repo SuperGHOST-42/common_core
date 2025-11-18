@@ -1,28 +1,43 @@
 #include "../includes/so_long.h"
 
+void	validate_map(t_game *game)
+{
+	t_map	*m;
+
+	m = &game->map;
+	if (check_rectangular(m))
+		error_exit(game, "Mapa nao e rectangular");
+	if (check_chars(m))
+		error_exit(game, "Caracter invalido no mapa");
+	if (count_elements(m))
+		error_exit(game, "Numero invalido de elementos");
+	if (check_walls(m))
+		error_exit(game, "Mapa nao esta fechado por paredes");
+}
+
+void print_map(t_map *map)
+{
+	int i;
+	
+	i = 0;
+	while (i < map->height)
+	{
+		ft_printf("%s", map->grid[i]);
+		i++;
+	}
+	ft_printf("\n");
+}
+
 int main(int argc, char **argv)
 {
     t_game	game;
-	int	y;
 
 	if (argc != 2)
 		error_exit(&game, "Use: ./so_long map.ber");
 
 	load_map(&game, argv[1]);
-
-	// TESTE DO PARSER ------------------------
-	y = 0;
-	while (y < game.map.height)
-	{
-		ft_printf("%s", game.map.grid[y]);
-		y++;
-	}
-	ft_printf("\nHEIGHT = %i\n", game.map.height);
-	ft_printf("WIDTH  = %i\n", game.map.width);
-
-	ft_printf("Mapa rectangular = %i\n", check_rectangular(&game.map));
-	ft_printf("Check Chars = %i\n", check_chars(&game.map));
-	ft_printf("Count elements = %i\n", count_elements(&game.map));
+	validate_map(&game);
+	print_map(&game.map);
 
 	return (0);
 }
