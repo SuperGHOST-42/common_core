@@ -1,27 +1,28 @@
 # include "../includes/so_long.h"
 
+static void	put_image(t_game *game, void *img, int y, int x)
+{
+	mlx_put_image_to_window(game->mlx, game->win, img, x * TILE, y * TILE);
+}
+
 static void	draw_tile(t_game *game, char c, int y, int x)
 {
+	put_image(game, game->sprite.floor, y, x);
+
 	if (c == '1')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->sprite.wall, x * TILE, y * TILE);
-	else
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->sprite.floor, x * TILE, y * TILE);
-	if (c == 'P')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->sprite.player, x * TILE, y * TILE);
+		put_image(game, game->sprite.wall, y, x);
+	else if (c == 'P')
+		put_image(game, game->sprite.player, y, x);
 	else if (c == 'C')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->sprite.collect, x * TILE, y * TILE);
+		put_image(game, game->sprite.collect, y, x);
 	else if (c == 'E')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->sprite.exit, x * TILE, y * TILE);
+		put_image(game, game->sprite.exit, y, x);
 }
+
 void	render_map(t_game *game)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < game->map.height)
@@ -31,7 +32,9 @@ void	render_map(t_game *game)
 		{
 			draw_tile(game, game->map.grid[y][x], y, x);
 			x++;
+			usleep(100000);
 		}
 		y++;
+		usleep(100000);
 	}
 }
