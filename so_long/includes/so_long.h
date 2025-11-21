@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-# define TILE 64
+# define TILE 80
 
 typedef struct s_map
 {
@@ -29,35 +29,60 @@ typedef struct s_player
     int     collected;
 }   t_player;
 
-typedef struct s_game
-{
-    void    *mlx;
-    void    *win;
-    t_map   map;
-    t_player player;
-}   t_game;
-
 typedef struct s_flood_fill
 {
-    int	collectibles;
+    int collectibles;
     int collectibles_found;
     int valid_exit;
 }   t_flood_fill;
 
+typedef struct s_sprites
+{
+    void    *wall;
+    void    *floor;
+    void    *player;
+    void    *collect;
+    void    *exit;
+}   t_sprites;
+
+typedef struct s_game
+{
+    void        *mlx;
+    void        *win;
+    t_map       map;
+    t_player    player;
+    t_sprites   sprite;
+}   t_game;
+
+// utils
 void    error_exit(t_game *game, char *msg);
+void	free_map(t_map *map);
+void    free_sprite(t_game *game);
+void	free_all(t_game *game);
 
 // map parsing
 void	load_map(t_game *game, char *file);
 int     ft_strlen_no_nl(char *s);
 
 // validate map
-int	check_rectangular(t_map *map);
-int	check_chars(t_map *map);
-int	count_elements(t_map *map);
-int	check_walls(t_map *map);
+int	    check_rectangular(t_map *map);
+int	    check_chars(t_map *map);
+int	    count_elements(t_map *map);
+int	    check_walls(t_map *map);
 
 // flood fill
-int	valid_path(t_game *game);
+int 	valid_path(t_game *game);
+
+// window
+void	open_window(t_game *game);
+int     close_window(t_game *game);
+
+// sprites
+void    load_sprites(t_game *game);
+
+// render
+void	render_map(t_game *game);
+
 
 
 # endif

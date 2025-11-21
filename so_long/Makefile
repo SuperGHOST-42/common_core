@@ -3,7 +3,7 @@
 # -------------------------
 NAME          = so_long
 CC            = cc
-CFLAGS        = -Wall 
+CFLAGS        = -Wall -Wextra -Werror
 
 # Diretórios
 SRC_DIR       = src
@@ -40,7 +40,7 @@ endif
 # -------------------------
 # Ficheiros fonte do projeto
 # -------------------------
-SRC = main.c utils.c map_parsing.c map_utils.c validate_map.c flood_fill.c
+SRC = main.c utils.c map_parsing.c map_utils.c validate_map.c flood_fill.c window.c sprites.c free.c rendering.c
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
