@@ -39,9 +39,13 @@ int main(int argc, char **argv)
 	load_map(&game, argv[1]);
 	validate_map(&game);
 	print_map(&game.map);
+	
 	open_window(&game);
+	
 	load_sprites(&game);
+	
 	render_map(&game);
+	
 	mlx_hook(game.win, 17, 0, close_window, &game);
 	mlx_loop(game.mlx);
 	return (0);
