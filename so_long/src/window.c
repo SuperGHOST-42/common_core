@@ -24,6 +24,7 @@ int	close_window(t_game *game)
 	exit(0);
 	return (0);
 }*/
+
 int	close_window(t_game *game)
 {
 	free_all(game);

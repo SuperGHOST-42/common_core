@@ -45,8 +45,10 @@ int main(int argc, char **argv)
 	load_sprites(&game);
 	
 	render_map(&game);
-	
-	mlx_hook(game.win, 17, 0, close_window, &game);
+	mlx_hook(game.win, 17, 0, close_window, &game); // close with X
+	mlx_hook(game.win, 2, 1L<<0, key_press, &game);
+
+
 	mlx_loop(game.mlx);
 	return (0);
 }

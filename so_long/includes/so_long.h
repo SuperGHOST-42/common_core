@@ -10,6 +10,12 @@
 #include <fcntl.h>
 
 # define TILE 80
+#  define KEY_ESC 65307
+#  define KEY_W   119
+#  define KEY_A   97
+#  define KEY_S   115
+#  define KEY_D   100
+
 
 typedef struct s_map
 {
@@ -76,6 +82,7 @@ int 	valid_path(t_game *game);
 // window
 void	open_window(t_game *game);
 int     close_window(t_game *game);
+//int     close_window(void *param);
 
 // sprites
 void    load_sprites(t_game *game);
@@ -83,6 +90,8 @@ void    load_sprites(t_game *game);
 // render
 void	render_map(t_game *game);
 
+// events
+int key_press(int key, t_game *game);
 
 
 # endif
