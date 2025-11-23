@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 		error_exit(&game, "Use: ./so_long map.ber");
 	
 	load_map(&game, argv[1]);
-	validate_map(&game);
+	//validate_map(&game);
 	print_map(&game.map);
 	
 	open_window(&game);

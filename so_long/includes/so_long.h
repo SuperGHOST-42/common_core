@@ -91,7 +91,10 @@ void    load_sprites(t_game *game);
 void	render_map(t_game *game);
 
 // events
-int key_press(int key, t_game *game);
+int     key_press(int key, t_game *game);
+
+// move_player
+void	move_player(t_game *game, int move_y, int move_x);
 
 
 # endif

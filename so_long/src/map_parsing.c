@@ -24,7 +24,6 @@ static int	count_lines(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		error_exit(NULL, "Erro: nao consegui abrir o mapa");
-
 	count = 0;
 	while ((line = get_next_line(fd)))
 	{
