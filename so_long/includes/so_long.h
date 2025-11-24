@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-# define TILE 80
+# define TILE 64
 #  define KEY_ESC 65307
 #  define KEY_W   119
 #  define KEY_A   97
@@ -53,6 +53,7 @@ typedef struct s_sprites
 
 typedef struct s_game
 {
+    int         total_moves;
     void        *mlx;
     void        *win;
     t_map       map;

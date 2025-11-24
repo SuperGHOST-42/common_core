@@ -8,7 +8,6 @@ static void	put_image(t_game *game, void *img, int y, int x)
 static void	draw_tile(t_game *game, char c, int y, int x)
 {
 	put_image(game, game->sprite.floor, y, x);
-
 	if (c == '1')
 		put_image(game, game->sprite.wall, y, x);
 	else if (c == 'P')

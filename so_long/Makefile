@@ -3,7 +3,7 @@
 # -------------------------
 NAME          = so_long
 CC            = cc
-CFLAGS        = -Wall -Wextra
+CFLAGS        = -Wall -Wextra -Werror
 
 # Diretórios
 SRC_DIR       = src

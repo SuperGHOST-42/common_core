@@ -46,13 +46,13 @@ static char	**copy_map(t_map *map)
 
 static void	flood_fill(char **map, int y, int x, t_flood_fill *ff)
 {
-	if (map[y][x] == '1' || map[y][x] == 'V')
+	if (map[y][x] == '1' || map[y][x] == 'S')
 		return ;
 	if (map[y][x] == 'C')
 		ff->collectibles_found++;
 	if (map[y][x] == 'E')
 		ff->valid_exit = 1;
-	map[y][x] = 'V';
+	map[y][x] = 'S'; // S for Seen
 	flood_fill(map, y + 1, x, ff);
 	flood_fill(map, y - 1, x, ff);
 	flood_fill(map, y, x + 1, ff);

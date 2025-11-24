@@ -9,20 +9,13 @@ void	move_player(t_game *game, int move_y, int move_x)
 	new_x = game->player.x + move_x;
 	if (new_y < 0 || new_y >= game->map.height ||
     new_x < 0 || new_x >= game->map.width)
-	{
-    	return; // bate na borda
-	}
+    	return;
 	if (game->map.grid[new_y][new_x] == '1')
-	{
-		ft_printf("%c\n", game->map.grid[new_y][new_x]);
-		game->map.grid[1][1] = 'C';
 		return;
-	}
 	if (game->map.grid[new_y][new_x] == 'C')
-	{
-		ft_printf("%c\n", game->map.grid[new_y][new_x]);
 		game->map.collectibles--;
-	}
+	if (game->map.grid[new_y][new_x] == 'E' && game->map.collectibles != 0)
+		return ;
 	if (game->map.grid[new_y][new_x] == 'E' && game->map.collectibles == 0)
 	{
 		ft_printf("YOU WIN!\n");

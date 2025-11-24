@@ -13,12 +13,13 @@ void	validate_map(t_game *game)
 		error_exit(game, "Numero invalido de elementos");
 	if (check_walls(m))
 		error_exit(game, "Mapa nao esta fechado por paredes");
+	if (valid_path(game))
+		error_exit(game, "Invalid path");
 }
 
 void print_map(t_map *map)
 {
 	int i;
-	
 	i = 0;
 	while (i < map->height)
 	{
@@ -31,24 +32,18 @@ void print_map(t_map *map)
 int main(int argc, char **argv)
 {
     t_game	game;
-
-	ft_memset(&game, 0, sizeof(t_game));
+	//ft_memset(&game, 0, sizeof(t_game));
+	game.total_moves = 0;
 	if (argc != 2)
 		error_exit(&game, "Use: ./so_long map.ber");
-	
 	load_map(&game, argv[1]);
-	//validate_map(&game);
+	validate_map(&game);
 	print_map(&game.map);
-	
 	open_window(&game);
-	
 	load_sprites(&game);
-	
 	render_map(&game);
 	mlx_hook(game.win, 17, 0, close_window, &game); // close with X
 	mlx_hook(game.win, 2, 1L<<0, key_press, &game);
-
-
 	mlx_loop(game.mlx);
 	return (0);
 }
