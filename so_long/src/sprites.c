@@ -15,7 +15,7 @@ static void	*load_xpm(t_game *game, char *path)
 void    load_sprites(t_game *game)
 {
     game->sprite.wall = load_xpm(game, "assets/wall.xpm");
-    game->sprite.floor = load_xpm(game, "assets/blue.xpm");
+    game->sprite.floor = load_xpm(game, "assets/floor.xpm");
     game->sprite.player = load_xpm(game, "assets/player.xpm");
     game->sprite.collect = load_xpm(game, "assets/collectible.xpm");
     game->sprite.exit = load_xpm(game, "assets/exit.xpm");

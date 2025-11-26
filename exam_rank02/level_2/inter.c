@@ -1,45 +1,43 @@
 #include <unistd.h>
 
-int	ft_double(char c, char *s1, char *s2)
+int	in_s2(char c, char *s2)
 {
-	int i = 0;
-	int doubles = 0;
-
-	while(s2[i])
+	int	i = 0;
+	while (s2[i])
 	{
-		if (c == s2[i])
-		{
-			doubles++;
-		}
+		if (s2[i] == c)
+			return (1);
 		i++;
 	}
-	i = 0;
-	while (s1[i])
-	{
-		if (c == s1[i])
-		{
-			doubles++;
-		}
-		i++;	
-	}
-	if (doubles == 2)
-		return (2);
 	return (0);
 }
+
+int	seen_before(char *s1, char c, int pos)
+{
+	int	i = 0;
+	while (i < pos)
+	{
+		if (s1[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
-	int i;
+	int	i;
+	char c;
 
+	if (argc != 3)
+		return (write(1, "\n", 1), 0);
 	i = 0;
 	while (argv[1][i])
 	{
-		if ((ft_double(argv[1][i], argv[1], argv[2])) == 2)
-		{
-			write(1, &argv[1][i], 1);
-			i++;
-		}
-		else
-			i++;
+		c = argv[1][i];
+		if (in_s2(c, argv[2]) && !seen_before(argv[1], c, i)) 
+			write(1, &c, 1);
+		i++;
 	}
 	write(1, "\n", 1);
 	return (0);

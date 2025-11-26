@@ -28,5 +28,5 @@ int	ft_atoi(const char *str)
 
 int	main(void)
 {
-	printf("%i\n", ft_atoi("0"));
+	printf("%i\n", ft_atoi("123"));
 }

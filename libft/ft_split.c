@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:03:27 by arpereir          #+#    #+#             */
-/*   Updated: 2025/05/01 19:22:15 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/11/26 11:50:32 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**ft_split(char const *s, char c)
 		len = 0;
 		while (s[i] == c)
 			i++;
-		if (s[i] != '\0')
+		if (s[i] != '\0') // Ariclenes Alexandre
 		{
 			while (s[i + len] != c && s[i + len] != '\0')
 				len++;
