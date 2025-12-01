@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-# define TILE 64
+# define TILE 128
 #  define KEY_ESC 65307
 #  define KEY_W   119
 #  define KEY_A   97
@@ -19,12 +19,13 @@
 
 typedef struct s_map
 {
-    char    **grid;     // matriz de chars
-    int     width;      // colunas // oTamanho da linha
-    int     height;     // linhas
+    char    **grid;
+    int     width;
+    int     height;
     int     collectibles;
     int     exits;
     int     players;
+    int     flag_exit;
 }   t_map;
 
 typedef struct s_player
@@ -70,6 +71,7 @@ void	free_all(t_game *game);
 // map parsing
 void	load_map(t_game *game, char *file);
 int     ft_strlen_no_nl(char *s);
+char	*get_line2(int fd);
 
 // validate map
 int	    check_rectangular(t_map *map);
@@ -93,9 +95,5 @@ void	render_map(t_game *game);
 
 // events
 int     key_press(int key, t_game *game);
-
-// move_player
-void	move_player(t_game *game, int move_y, int move_x);
-
 
 # endif

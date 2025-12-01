@@ -35,9 +35,13 @@ void	free_all(t_game *game)
 	/* 1) Free mapa */
 	free_map(&game->map);
 
+	if (game->map.flag_exit != 1)
+	{
+		return ;	
+	}
 	/* 2) Free imagens */
-	if (game->mlx)
-		free_sprite(game);
+	  if (game->mlx)
+		free_sprite(game); 
 
 	/* 3) Free janela */
 	if (game->mlx && game->win)

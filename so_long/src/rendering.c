@@ -31,9 +31,7 @@ void	render_map(t_game *game)
 		{
 			draw_tile(game, game->map.grid[y][x], y, x);
 			x++;
-			//usleep(100000);
 		}
 		y++;
-		//usleep(100000);
 	}
 }

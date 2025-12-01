@@ -25,12 +25,13 @@ static int	count_lines(char *file)
 	if (fd < 0)
 		error_exit(NULL, "Erro: nao consegui abrir o mapa");
 	count = 0;
-	while ((line = get_next_line(fd)))
+	while ((line = get_line2(fd)))
 	{
 		count++;
 		free(line);
 	}
 	close(fd);
+	ft_printf("Count lines: %i\n", count);
 	return (count);
 }
 
@@ -57,7 +58,7 @@ void	load_map(t_game *game, char *file)
 	i = 0;
 	while (i < game->map.height)
 	{
-		game->map.grid[i] = get_next_line(fd);
+		game->map.grid[i] = get_line2(fd);
 		if (!game->map.grid[i])
 			error_exit(game, "Erro: atribuicao de linha falhou");
 		i++;

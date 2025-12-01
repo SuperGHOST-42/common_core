@@ -14,12 +14,30 @@ static void	move_player(t_game *game, int move_y, int move_x)
 		return;
 	if (game->map.grid[new_y][new_x] == 'C')
 		game->map.collectibles--;
-	if (game->map.grid[new_y][new_x] == 'E' && game->map.collectibles != 0)
+	/* if (game->map.grid[new_y][new_x] == 'E' && game->map.collectibles != 0)
 		return ;
 	if (game->map.grid[new_y][new_x] == 'E' && game->map.collectibles == 0)
 	{
-		ft_printf("YOU WON!\n");
+		ft_printf("YOU WIN!\n");
 		close_window(game);
+	} */
+	if (game->map.flag_exit == 1)
+	{
+		
+	}
+	if (game->map.grid[new_y][new_x] == 'E')
+	{
+		if (game->map.collectibles == 0)
+		{
+			ft_printf("YOU WON");
+			close_window(game);
+		}
+		else
+		{
+			game->map.flag_exit = 1;
+			game->map.exit_y = new_y;
+			game->map.exit_x = new_x;
+		}
 	}
 	game->map.grid[game->player.y][game->player.x] = '0';
 	game->player.y = new_y;
