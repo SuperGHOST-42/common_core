@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:03:27 by arpereir          #+#    #+#             */
-/*   Updated: 2025/11/26 11:50:32 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/12/01 13:32:24 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,15 @@ char	**ft_split(char const *s, char c)
 	return (splitted);
 }
 /*
- int	main(void)
- {
- 	char	str[] = "Ariclenes,Alexandre,SuperGHOST_42";
+# include <stdio.h>
 
- 	char	**ptr = ft_split(str, ',');
-	
- 	for (int i = 0; ptr[i] != NULL; i++)
- 	{
- 		printf("%s\n", ptr[i]);
- 		free(ptr[i]);
- 	}
- 	free(ptr);
-	
- 	return (0);
+int main(void)
+{
+	char **str;
+
+	str = ft_split("  Hello World    ", 'l');
+	for (int i = 0; str[i] != NULL; i++)
+	{
+		printf("%s\n", str[i]);
+	}
 }*/

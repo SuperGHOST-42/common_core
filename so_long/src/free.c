@@ -32,31 +32,16 @@ void	free_map(t_map *map)
 
 void	free_all(t_game *game)
 {
-	/* 1) Free mapa */
 	free_map(&game->map);
-
-	if (game->map.flag_exit != 1)
-	{
-		return ;	
-	}
-	/* 2) Free imagens */
-	  if (game->mlx)
-		free_sprite(game); 
-
-	/* 3) Free janela */
+	if (game->mlx)
+		free_sprite(game); 	
 	if (game->mlx && game->win)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		game->win = NULL;
 	}
-
-	/* 4) Free display (apenas no Linux) */
-	#ifdef __linux__
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
-	#endif
-
-	/* 5) Free MLX pointer */
 	if (game->mlx)
 	{
 		free(game->mlx);

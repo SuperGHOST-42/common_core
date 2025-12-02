@@ -6,13 +6,13 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:39:02 by arpereir          #+#    #+#             */
-/*   Updated: 2025/12/01 13:49:43 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/12/02 12:27:37 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-char	*get_line2(int fd)
+char	*get_next_line_(int fd)
 {
 	char	*line;
 	char	c;

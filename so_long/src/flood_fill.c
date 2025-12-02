@@ -76,8 +76,6 @@ int	valid_path(t_game *game)
 	if (!copy)
 		error_exit(game, "Malloc falhou");
 	flood_fill(copy, game->player.y, game->player.x, &ff);
-	game->map.flag_exit = ff.valid_exit && (ff.collectibles_found == ff.collectibles);
-	ft_printf("flag_exit = %i\n", game->map.flag_exit);
 	i = 0;
 	while (i < game->map.height)
 		free(copy[i++]);

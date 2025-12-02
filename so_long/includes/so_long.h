@@ -25,7 +25,6 @@ typedef struct s_map
     int     collectibles;
     int     exits;
     int     players;
-    int     flag_exit;
 }   t_map;
 
 typedef struct s_player
@@ -54,7 +53,7 @@ typedef struct s_sprites
 
 typedef struct s_game
 {
-    int         total_moves;
+    long         total_moves;
     void        *mlx;
     void        *win;
     t_map       map;
@@ -71,7 +70,7 @@ void	free_all(t_game *game);
 // map parsing
 void	load_map(t_game *game, char *file);
 int     ft_strlen_no_nl(char *s);
-char	*get_line2(int fd);
+char	*get_next_line_(int fd);
 
 // validate map
 int	    check_rectangular(t_map *map);

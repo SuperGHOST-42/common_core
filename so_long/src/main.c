@@ -32,7 +32,7 @@ void print_map(t_map *map)
 int main(int argc, char **argv)
 {
     t_game	game;
-	//ft_memset(&game, 0, sizeof(t_game));
+	ft_memset(&game, 0, sizeof(t_game));
 	game.total_moves = 0;
 	if (argc != 2)
 		error_exit(&game, "Use: ./so_long map.ber");
