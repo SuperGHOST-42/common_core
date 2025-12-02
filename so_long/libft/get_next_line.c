@@ -87,7 +87,7 @@ char	*clean_stash(char *stash)
 	free(stash);
 	return (rest);
 }
- /*
+/*
  int	main(int argc, char **argv)
 {
 	(void)argc;

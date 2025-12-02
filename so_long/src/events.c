@@ -1,22 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   events.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 13:23:36 by arpereir          #+#    #+#             */
+/*   Updated: 2025/12/02 13:23:37 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 static void	move_player(t_game *game, int move_y, int move_x)
 {
-	int new_y;
-	int new_x;
+	int	new_y;
+	int	new_x;
 
 	new_y = game->player.y + move_y;
 	new_x = game->player.x + move_x;
-	if (new_y < 0 || new_y >= game->map.height ||
-    new_x < 0 || new_x >= game->map.width)
-    	return;
+	if (new_y < 0 || new_y >= game->map.height)
+		return ;
+	if (new_x < 0 || new_x >= game->map.width)
+		return ;
 	if (game->map.grid[new_y][new_x] == '1')
-		return;
+		return ;
 	if (game->map.grid[new_y][new_x] == 'C')
 		game->map.collectibles--;
-	if (game->map.grid[new_y][new_x] == 'E' && game->map.collectibles != 0)
+	if (game->map.grid[new_y][new_x] == 'E'
+		&& game->map.collectibles != 0)
 		return ;
-	if (game->map.grid[new_y][new_x] == 'E' && game->map.collectibles == 0)
+	if (game->map.grid[new_y][new_x] == 'E'
+		&& game->map.collectibles == 0)
 	{
 		ft_printf("YOU WON!\n");
 		close_window(game);
@@ -28,7 +43,7 @@ static void	move_player(t_game *game, int move_y, int move_x)
 	render_map(game);
 }
 
-int key_press(int key, t_game *game)
+int	key_press(int key, t_game *game)
 {
 	if (key == KEY_ESC)
 		close_window(game);

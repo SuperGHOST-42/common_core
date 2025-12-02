@@ -87,7 +87,7 @@ char	*clean_stash(char *stash)
 	free(stash);
 	return (rest);
 }
- 
+/*
  int	main(int argc, char **argv)
 {
 	char	*line;
@@ -104,4 +104,4 @@ char	*clean_stash(char *stash)
 	}
 	close(fd);
 	return (0);
-}  
+}*/

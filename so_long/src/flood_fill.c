@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 13:28:57 by arpereir          #+#    #+#             */
+/*   Updated: 2025/12/02 14:45:53 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 static void	find_player(t_game *game)
@@ -53,9 +65,10 @@ static void	flood_fill(char **map, int y, int x, t_flood_fill *ff)
 	if (map[y][x] == 'E')
 	{
 		ff->valid_exit = 1;
+		map[y][x] = 'S';
 		return ;
 	}
-	map[y][x] = 'S'; // S for Seen
+	map[y][x] = 'S';
 	flood_fill(map, y + 1, x, ff);
 	flood_fill(map, y - 1, x, ff);
 	flood_fill(map, y, x + 1, ff);
@@ -74,7 +87,7 @@ int	valid_path(t_game *game)
 	ff.valid_exit = 0;
 	copy = copy_map(&game->map);
 	if (!copy)
-		error_exit(game, "Malloc falhou");
+		error_exit(game, "Malloc error");
 	flood_fill(copy, game->player.y, game->player.x, &ff);
 	i = 0;
 	while (i < game->map.height)

@@ -1,22 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 14:37:43 by arpereir          #+#    #+#             */
+/*   Updated: 2025/12/02 14:43:18 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 int	check_rectangular(t_map *map)
 {
 	int	i;
-	int	first_line_lenght;
-	int	next_line;
+	int	first_line_lenth;
+	int	next_len;
 
+	first_line_lenth = ft_strlen_no_nl(map->grid[0]);
 	i = 1;
-	first_line_lenght = ft_strlen_no_nl(map->grid[0]);
-	while(i < map->height)
+	while (i < map->height)
 	{
-		next_line = ft_strlen_no_nl(map->grid[i]);
-		if (next_line != first_line_lenght)
+		next_len = ft_strlen_no_nl(map->grid[i]);
+		if (next_len != first_line_lenth)
 			return (1);
 		i++;
 	}
 	return (0);
 }
+
 int	check_chars(t_map *map)
 {
 	int		i;
@@ -42,8 +55,8 @@ int	check_chars(t_map *map)
 
 int	count_elements(t_map *map)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	c;
 
 	map->players = 0;
@@ -53,7 +66,7 @@ int	count_elements(t_map *map)
 	while (i < map->height)
 	{
 		j = 0;
-		while (map->grid[i][j] && map->grid[i][j] != '\n')
+		while (map->grid[i][j] && map->grid[i][j++] != '\n')
 		{
 			c = map->grid[i][j];
 			if (c == 'P')
@@ -62,11 +75,11 @@ int	count_elements(t_map *map)
 				map->exits++;
 			else if (c == 'C')
 				map->collectibles++;
-			j++;
 		}
 		i++;
 	}
-	return (!(map->players == 1 && map->exits == 1 && map->collectibles > 0));
+	return (!(map->players == 1 && map->exits == 1
+			&& map->collectibles > 0));
 }
 
 static int	is_wall_row(char *row)

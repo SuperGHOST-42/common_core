@@ -1,4 +1,16 @@
-# include "../includes/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 14:35:04 by arpereir          #+#    #+#             */
+/*   Updated: 2025/12/02 14:35:38 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/so_long.h"
 
 static void	put_image(t_game *game, void *img, int y, int x)
 {

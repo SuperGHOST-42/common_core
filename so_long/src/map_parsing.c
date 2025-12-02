@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 14:32:11 by arpereir          #+#    #+#             */
+/*   Updated: 2025/12/02 14:52:08 by arpereir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 static int	check_extension(char *file)
@@ -23,12 +35,14 @@ static int	count_lines(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		error_exit(NULL, "Erro: nao consegui abrir o mapa");
+		error_exit(NULL, "Error: could not open map file");
 	count = 0;
-	while ((line = get_next_line_(fd)))
+	line = get_next_line_(fd);
+	while ((line))
 	{
 		count++;
 		free(line);
+		line = get_next_line_(fd);
 	}
 	close(fd);
 	return (count);
@@ -36,30 +50,26 @@ static int	count_lines(char *file)
 
 void	load_map(t_game *game, char *file)
 {
-	int		fd;
-	int		i;
+	int	fd;
+	int	i;
 
 	if (!check_extension(file))
-		error_exit(NULL, "Erro: o ficheiro deve terminar em .ber");
-
+		error_exit(NULL, "Error: file must end with .ber");
 	game->map.height = count_lines(file);
 	if (game->map.height == 0)
-		error_exit(NULL, "Erro: mapa vazio");
-
+		error_exit(NULL, "Error: empty map");
 	game->map.grid = malloc(sizeof(char *) * game->map.height);
 	if (!game->map.grid)
-		error_exit(game, "Erro: malloc falhou");
-
+		error_exit(game, "Error: malloc failed");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		error_exit(game, "Erro: nao consegui abrir o mapa");
-
+		error_exit(game, "Error: could not open map file");
 	i = 0;
 	while (i < game->map.height)
 	{
 		game->map.grid[i] = get_next_line_(fd);
 		if (!game->map.grid[i])
-			error_exit(game, "Erro: atribuicao de linha falhou");
+			error_exit(game, "Error: failed to assign map line");
 		i++;
 	}
 	close(fd);
