@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 13:28:57 by arpereir          #+#    #+#             */
-/*   Updated: 2025/12/02 14:45:53 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/12/03 13:00:22 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	valid_path(t_game *game)
 	ff.valid_exit = 0;
 	copy = copy_map(&game->map);
 	if (!copy)
-		error_exit(game, "Malloc error");
+		error_exit(game, "Error\nMalloc error");
 	flood_fill(copy, game->player.y, game->player.x, &ff);
 	i = 0;
 	while (i < game->map.height)

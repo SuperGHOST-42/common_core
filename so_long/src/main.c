@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 13:23:16 by arpereir          #+#    #+#             */
-/*   Updated: 2025/12/02 14:51:55 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:59:22 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,15 @@ void	validate_map(t_game *game)
 
 	m = &game->map;
 	if (check_rectangular(m))
-		error_exit(game, "Map is not rectangular");
+		error_exit(game, "Error\nMap is not rectangular");
 	if (check_chars(m))
-		error_exit(game, "Invalid character in map");
+		error_exit(game, "Error\nInvalid character in map");
 	if (count_elements(m))
-		error_exit(game, "Invalid number of elements");
+		error_exit(game, "Error\nInvalid number of elements");
 	if (check_walls(m))
-		error_exit(game, "Map is not surrounded by walls");
+		error_exit(game, "Error\nMap is not surrounded by walls");
 	if (valid_path(game))
-		error_exit(game, "Invalid path");
-}
-
-void	print_map(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->height)
-	{
-		ft_printf("%s", map->grid[i]);
-		i++;
-	}
-	ft_printf("\n");
+		error_exit(game, "Error\nInvalid path");
 }
 
 int	main(int argc, char **argv)
@@ -47,11 +34,11 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	ft_memset(&game, 0, sizeof(t_game));
+	game.count_moves = 1;
 	if (argc != 2)
-		error_exit(&game, "Use: ./so_long map.ber");
+		error_exit(&game, "Error\nUse: ./so_long map.ber");
 	load_map(&game, argv[1]);
 	validate_map(&game);
-	print_map(&game.map);
 	open_window(&game);
 	load_sprites(&game);
 	render_map(&game);

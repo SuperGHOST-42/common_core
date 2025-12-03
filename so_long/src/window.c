@@ -6,7 +6,7 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 14:50:17 by arpereir          #+#    #+#             */
-/*   Updated: 2025/12/02 14:50:35 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/12/03 13:01:16 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	open_window(t_game *game)
 	h = game->map.height * TILE;
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		error_exit(game, "Error initializing MLX");
+		error_exit(game, "Error\nInitializing MLX");
 	game->win = mlx_new_window(game->mlx, w, h, "so_long");
 	if (!game->win)
-		error_exit(game, "Error creating window");
+		error_exit(game, "Error\nCreating window");
 }
 
 int	close_window(t_game *game)

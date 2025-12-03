@@ -6,14 +6,14 @@
 /*   By: arpereir <arpereir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 00:00:00 by arpereir          #+#    #+#             */
-/*   Updated: 2025/12/02 13:21:53 by arpereir         ###   ########.fr       */
+/*   Updated: 2025/12/03 13:42:51 by arpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../mlx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
 # include "../libft/get_next_line.h"
@@ -31,8 +31,8 @@
 typedef struct s_map
 {
 	char	**grid;
-	int		width;
-	int		height;
+	int		width;	//largura
+	int		height;	//altura
 	int		collectibles;
 	int		exits;
 	int		players;
@@ -64,7 +64,7 @@ typedef struct s_sprites
 
 typedef struct s_game
 {
-	long		total_moves;
+	long		count_moves;
 	void		*mlx;
 	void		*win;
 	t_map		map;

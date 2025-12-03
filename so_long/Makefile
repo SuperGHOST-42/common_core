@@ -10,7 +10,7 @@ SRC_DIR       = src
 OBJ_DIR       = obj
 LIBFT_DIR     = libft
 FT_PRINTF_DIR = $(LIBFT_DIR)/ft_printf
-MLX_DIR       = mlx
+MLX_DIR       = minilibx-linux
 
 # Bibliotecas
 LIBFT         = $(LIBFT_DIR)/libft.a
